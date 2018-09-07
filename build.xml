@@ -1,0 +1,33 @@
+<project name="SFDC" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+    <target name="deploy">
+
+        <sf:deploy username="${sf2.username}" 
+
+                     password="${sf2.password}" 
+
+                     serverurl="${sf2.serverurl}" 
+
+                     deployRoot="src"
+		     
+		     autoUpdatePackage="true"
+
+                     ignoreWarnings="true" />
+ </target>
+<target name="fetchChanges">
+
+        <sf:retrieve username="${sf2.username}"
+
+                     password="${sf2.password}"
+
+                     serverurl="${sf2.serverurl}"
+
+                     retrieveTarget="retrievecode"
+
+                     unpackaged="/src/package.xml"/>
+
+    </target>
+</project>
